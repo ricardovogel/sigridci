@@ -18,12 +18,31 @@ The different elements in this page are:
 
 ## Different statuses of green code findings
 
-These are the different statutes of findings. The status *"Fixed"* will be applied automatically if a finding is resolved. See [Security Findings FAQ: Fixed issues are auto-detected](faq-security.md#how-does-the-automatic-detection-of-fixed-findings-work). The other statuses can be set. They are similar to those used for [system maintainability refactoring candidates](system-maintainability.md#refactoring-candidates). 
+These are the different statutes of findings. The status *"Fixed"* will be applied automatically if a finding is resolved. See [Security Findings FAQ: Fixed issues are auto-detected](faq-security.md#how-does-the-automatic-detection-of-fixed-findings-work) (in hte Security finding documentation). The other statuses can be set. They are similar to those used for [system maintainability refactoring candidates](system-maintainability.md#refactoring-candidates). 
 * *"Raw"* means "not yet verified" where *"Refined"* ones mark that a finding has been confirmed manually. Inversely, a finding can be set as *"False positive"*. 
 * *"Will fix"* signals the intention to fix it, while *"Risk Accepted"* does not.
 
 ## Different possible groupings of green code findings
-@@TODO
+Different views can be selected in the top left menu. 
+
+<img src="../images/system-green-code-grouping-finding.png" width="250" />
+
+In the Grouping menu under *"Finding"*, the following types of grouping can be set:
+* *"Activity"* groups according to *"New"*, *"Recurring"* or *"Resolved"*.
+* *"Origin"* refers to the originating tool of the finding.
+* *"Severity"* orders on level of severity (based on CVSS).
+* *"Status"* lists the statuses as [mentioned above](#different-statuses-of-green-code-findings).
+* *"Type"* shows a specific list of vulnerabilities. This is especially useful for technical analysis, since sometimes, a whole category/type of findings may be set to *"False positive"* (also, see [below in the prioritizing section](#a-general-typical-strategy-for-processing-security-findings)). 
+* *"Weakness"* orders on type of weaknesse (based on [MITRE's *CWE* database](https://cwe.mitre.org/)). Weaknesses are defined somewhat higher level than *"Type"*. 
+
+In *"Location"*, either *"Component"* or *"File"* grouping can be chosen. The Component group follows the maintainability grouping in components. Findings may fall outside of that grouping because of exclusions. Then they will show under the *"Other"* component. Examples might be binaries or package manager configuration files, which would be excluded for maintainability analysis and therefore not fall into a component for the purpose of maintainability calculations. 
+
+Under *"Model"*, different Models can be used to map findings on. We have three options available: the SIG Green Code Top 5, further explained [below](#different-types-of-sig-green-code-top-5-findings), CISQ -- Resrouce Sustainability Measure (ASCRSM), and ISO 5055 -- Performance Efficiency, looking specifically at performance findings. 
+
+### A note on seeing the same file/finding multiple times
+* **A specific finding** is counted once, but it may be visible in multiple views. This could be because e.g. there is certain overlap in classification of the model that you have chosen as a view. 
+* **A specific line** may be counted multiple times if it refers to multiple *CWEs*: a count is applied for each possible green code finding. See also [Security FAQ elaboration on multiple views of the same finding](faq-security.md#why-does-the-finding-list-count-certain-findings-twice) (in the Security finding documentation).  
+
 
 ## Different types of SIG Green Code Top 5 findings
 @@TODO
