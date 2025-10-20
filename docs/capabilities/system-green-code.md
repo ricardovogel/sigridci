@@ -38,8 +38,10 @@ Resources on the machine being wasted in some way. For example: when using `pip`
 A specific type of inefficient computation. Findings in this category are about unnecesary extra time complexity in loops. Take the following Java example:
 
 ```java
-for (someList.contains(1)) {
-  doOperation(someList);
+// Process tasks in order until no more "urgent" tasks are left.
+while (tasks.contains("urgent")) {
+  String current = tasks.removeFirst(); 
+  processTask(current);
 }
 ```
 
