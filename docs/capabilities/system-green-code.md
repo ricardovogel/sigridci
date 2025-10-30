@@ -1,6 +1,6 @@
 # Green Code
 
-Green Code is a beta feature focused on the code's sustainability and resource efficiency. This may be available for your system. It depends on which capabilities have been activated specifically for your system or portfolio.
+Green Code is a beta feature focused on the code's **sustainability** and **resource efficiency**. This may be available for your system. It depends on which capabilities have been activated specifically for your system or portfolio.
 
 ## Navigating the Green Code Overview
 The Green Code overview page shows a star rating, a summary of findings, their change, age and estimated severity. 
@@ -18,7 +18,7 @@ The different elements in this page are:
 
 ## Different statuses of green code findings
 
-These are the different statutes of findings. The status *"Fixed"* will be applied automatically if a finding is resolved. See [Security Findings FAQ: Fixed issues are auto-detected](faq-security.md#how-does-the-automatic-detection-of-fixed-findings-work) (in the Security finding documentation). The other statuses can be set. They are similar to those used for [system maintainability refactoring candidates](system-maintainability.md#refactoring-candidates). 
+These are the different statutes of findings. The status *"Fixed"* will be applied automatically if a finding is resolved. See [Security Findings FAQ: Fixed issues are auto-detected](faq-security.md#how-does-the-automatic-detection-of-fixed-findings-work). The other statuses can be set. They are similar to those used for [system maintainability refactoring candidates](system-maintainability.md#refactoring-candidates). 
 * *"Raw"* means "not yet verified" where *"Refined"* ones mark that a finding has been confirmed manually. Inversely, a finding can be set as *"False positive"*. 
 * *"Will fix"* signals the intention to fix it, while *"Risk Accepted"* does not.
 
@@ -41,17 +41,16 @@ Under *"Model"*, different Models can be used to map findings on. We have three 
 
 ### A note on seeing the same file/finding multiple times
 * **A specific finding** is counted once, but it may be visible in multiple views. This could be because e.g. there is certain overlap in classification of the model that you have chosen as a view. 
-* **A specific line** may be counted multiple times if it refers to multiple *CWEs*: a count is applied for each possible green code finding. See also [Security FAQ elaboration on multiple views of the same finding](faq-security.md#why-does-the-finding-list-count-certain-findings-twice) (in the Security finding documentation).  
-
+* **A specific line** may be counted multiple times if it refers to multiple *CWEs*: a count is applied for each possible green code finding. See also [Security FAQ elaboration on multiple views of the same finding](faq-security.md#why-does-the-finding-list-count-certain-findings-twice) (in the Security finding documentation).
 
 ## Different types of SIG Green Code Top 5 findings
 The SIG Green Code Top 5 model has the following categories:
 
 ### 1. Inefficient Resource Usage
-Resources on the machine being wasted in some way. For example: when using `pip` to install a Python library in a Dockerfile, this library is cached by default. This unnecessarily increases the size of the Docker image. Another example is the use of `ThreadLocal` variables in Java. These should be correctly cleaned up. 
+Findings about machine resources being wasted in some way. Examples include unnecessary caching in Docker images, which increase the size of the image, and incorrect use of threads, which cause unnecessary computation.
 
 ### 2. Inefficient Computation
-Various computational and algorithmic inefficiencies that can decrease performance, and thus increase energy usage. Examples include using outdated, inefficient data structures that can be easily replaced by their modern counterpart. 
+Various computational and algorithmic inefficiencies that can decrease performance, and thus unnecessarily increase energy usage. Examples include using outdated, inefficient data structures that can be easily replaced by their modern counterpart. 
 
 ### 3. Expensive Operations in Loops
 A specific type of inefficient computation. Findings in this category are about unnecessary extra time complexity in loops. Take the following Java example:
@@ -68,13 +67,13 @@ Because `List.contains()` in Java is an O(n) operation - the whole list needs to
 
 Loops like this can be made more efficient by, for example, using a `HashSet` instead of a `List`, if possible. `HashSet.contains()` is an O(1) operation.
 
-If the size of the list is small, fixing these findings may not have a significant impact.
+Fixing these findings has more impact if the list is larger.
 
 ### 4. Inefficient Data Query
-This feature is not currently available. SIG is researching possible code patterns to detect, for example, inefficient SQL queries. 
+Findings in this category are about anti-patterns found in data queries, like SQL. 
 
 ### 5. Error Handling
-@@TODO
+Findings about error handling. For example, not closing threads properly after an error is thrown, or not handling errors early enough, leading to unnecessary resource usage.
 
 ## Security and Open Source Health findings in Green Code
 Some Green Code findings are security or open source vulnerabilities that are also relevant for the sustainability of the software. Attackers may be able to use vulnerabilities to cause unnecessary usage, for example when attempting a denial of service attack. Furthermore, non-malicious actors may accidentally cause less severe versions of the vulnerability, also causing unnecessary computations. 
@@ -84,6 +83,6 @@ On the top right you can show the code in the *"Code Explorer"*, which will show
 
 <img src="../images/system-security-pom-dependency-edit-finding.png" width="400" />
 
-## SIG may offer consultancy services to help you with green code
-Depending on your agreement with SIG, green code consultancy may be available. Or this can be offered as a separate consultancy effort.
+## SIG may offer consultancy services to help you with green software
+Depending on your agreement with SIG, green software consultancy may be available. Or this can be offered as a separate consultancy effort.
 
